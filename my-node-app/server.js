@@ -6,7 +6,7 @@ import logger from "./utils/logger.js";
 import { create } from 'express-handlebars';
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const handlebars = create({extname: '.hbs'});
 app.engine(".hbs", handlebars.engine);
