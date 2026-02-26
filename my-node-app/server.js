@@ -8,7 +8,10 @@ import { create } from 'express-handlebars';
 const app = express();
 const port = process.env.PORT || 3000;
 
-const handlebars = create({extname: '.hbs'});
+const handlebars = create({
+  extname: '.hbs',
+  partialsDir: 'views/partials'
+});
 app.engine(".hbs", handlebars.engine);
 app.set("view engine", ".hbs");
 
