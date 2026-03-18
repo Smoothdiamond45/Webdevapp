@@ -18,5 +18,6 @@ router.post('/dashboard/addplaylist', dashboard.addPlaylist);
 router.get('/playlist/:id/deletesong/:songid', playlist.deleteSong);
 router.get('/error', (request, response) => response.status(404).end('Page not found.'));
 router.get('/dashboard/deleteplaylist/:id', dashboard.deletePlaylist);
+router.post('/playlist/:id/updatesong/:songid', playlist.updateSong);
 
 export default router;

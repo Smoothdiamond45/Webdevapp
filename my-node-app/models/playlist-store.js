@@ -24,6 +24,9 @@ addPlaylist(playlist) {
 removeSong(id, songId) {
     this.store.removeItem(this.collection, id, this.array, songId);
 },
+editSong(id, songId, updatedSong) {
+    this.store.editItem(this.collection, id, songId, this.array, updatedSong);
+},
 
 };
 
