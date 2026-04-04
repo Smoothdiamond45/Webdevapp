@@ -3,6 +3,8 @@
 import express from 'express';
 const router = express.Router();
 import logger from "./utils/logger.js";
+import stats from './controllers/stats.js';
+router.get('/stats', stats.createView);
 
 import start from './controllers/start.js';
 import dashboard from './controllers/dashboard.js';
