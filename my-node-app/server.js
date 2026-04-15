@@ -40,6 +40,7 @@ highlightPopular: (rating) => {
 
     }
 });
+
 app.engine(".hbs", handlebars.engine);
 app.set("view engine", ".hbs");
 
