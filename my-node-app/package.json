@@ -11,6 +11,9 @@
   "devDependencies": {
     "nodemon": "^3.1.11"
   },
+  "engines": {
+  "node": ">=22.22.2"
+},
   "name": "my-node-app",
   "version": "1.0.0",
   "description": "Music PLaylist Maker",
