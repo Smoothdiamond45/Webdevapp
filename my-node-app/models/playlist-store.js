@@ -27,7 +27,10 @@ removeSong(id, songId) {
 editSong(id, songId, updatedSong) {
     this.store.editItem(this.collection, id, songId, this.array, updatedSong);
 },
-searchPlaylist(search) {
+removePlaylist(id) {
+    const playlist = this.getPlaylist(id);
+    this.store.removeCollection(this.collection, playlist);
+},
     return this.store.findBy(
       this.collection,
       (playlist => playlist.title.toLowerCase().includes(search.toLowerCase())))

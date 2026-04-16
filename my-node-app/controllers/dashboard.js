@@ -2,6 +2,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import logger from "../utils/logger.js";
 import playlistStore from "../models/playlist-store.js";
+import accounts from "./accounts.js";
 
 const dashboard = {
  createView(request, response) {
@@ -50,11 +51,14 @@ const dashboard = {
 
   addPlaylist(request, response) {
     const timestamp = new Date();
-    
+    const loggedInUser = accounts.getCurrentUser(request);
+
     const newPlaylist = {
       id: uuidv4(),
       title: request.body.title,
-	  date: timestamp,
+      rating: Number(request.body.rating) || 0,
+      date: timestamp,
+      userid: loggedInUser ? loggedInUser.id : null,
       songs: []
     };
     playlistStore.addPlaylist(newPlaylist);
