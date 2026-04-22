@@ -1,10 +1,8 @@
 'use strict';
-
 import logger from '../utils/logger.js';
 import JsonStore from './json-store.js';
 
 const playlistStore = {
-
   store: new JsonStore('./models/playlist-store.json', { playlistCollection: [] }),
   collection: 'playlistCollection',
   array: 'songs',
@@ -14,36 +12,36 @@ const playlistStore = {
   },
   getPlaylist(id) {
     return this.store.findOneBy(this.collection, (playlist => playlist.id === id));
-},
-addSong(id, song) {
+  },
+  addSong(id, song) {
     this.store.addItem(this.collection, id, this.array, song);
-},
-addPlaylist(playlist) {
+  },
+  addPlaylist(playlist) {
     this.store.addCollection(this.collection, playlist);
-},
-removeSong(id, songId) {
+  },
+  removeSong(id, songId) {
     this.store.removeItem(this.collection, id, this.array, songId);
-},
-editSong(id, songId, updatedSong) {
+  },
+  editSong(id, songId, updatedSong) {
     this.store.editItem(this.collection, id, songId, this.array, updatedSong);
-},
-removePlaylist(id) {
+  },
+  removePlaylist(id) {
     const playlist = this.getPlaylist(id);
     this.store.removeCollection(this.collection, playlist);
-},
+  },
+  searchPlaylists(search) {
     return this.store.findBy(
       this.collection,
       (playlist => playlist.title.toLowerCase().includes(search.toLowerCase())))
-},
-getUserPlaylists(userid) {
-  return this.store.findBy(this.collection, (playlist => playlist.userid === userid));
-},
-
-searchUserPlaylists(search, userid) {
-  return this.store.findBy(
-    this.collection,
-    (playlist => playlist.userid === userid && playlist.title.toLowerCase().includes(search.toLowerCase())))
-}, 
+  },
+  getUserPlaylists(userid) {
+    return this.store.findBy(this.collection, (playlist => playlist.userid === userid));
+  },
+  searchUserPlaylists(search, userid) {
+    return this.store.findBy(
+      this.collection,
+      (playlist => playlist.userid === userid && playlist.title.toLowerCase().includes(search.toLowerCase())))
+  },
 };
 
 export default playlistStore;
