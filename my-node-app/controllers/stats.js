@@ -20,6 +20,9 @@ const stats = {
     let maxRating = Math.max(...mapped);
     let maxRated = playlists.filter(playlist => playlist.rating === maxRating);
     let favTitles = maxRated.map(item => item.title);
+    let totalRating = playlists.reduce((total, playlist) => total + parseInt(playlist.rating), 0);
+    let avgRating = numPlaylists > 0 ? totalRating/numPlaylists : 0;
+
 
 
     const statistics = {
