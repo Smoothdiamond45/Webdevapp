@@ -10,9 +10,9 @@ import dotenv from "dotenv";
 dotenv.config({ quiet: true });
 
 cloudinary.config({
- CLOUDINARY_CLOUD_NAME=matthew,
- CLOUDINARY_API_KEY=152333183591859,
- CLOUDINARY_API_SECRET=-fjQnZ73hsVf9_boNEexB0kQrng
+ CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
+ CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
+ CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET
 
 });
 
