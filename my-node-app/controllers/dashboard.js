@@ -54,10 +54,9 @@ const dashboard = {
     else response.redirect('/');
 
   },
-   addPlaylist(request, response) {
+ addPlaylist(request, response) {
     const loggedInUser = accounts.getCurrentUser(request);
     const timestamp = new Date();
-	
     const newPlaylist = {
       id: uuidv4(),
       userid: loggedInUser.id,
@@ -67,20 +66,28 @@ const dashboard = {
       date: timestamp
     };
 
-    playlistStore.addPlaylist(newPlaylist, request.files.picture, function() {
-        response.redirect("/dashboard");
+    playlistStore.addPlaylist(newPlaylist, request.files.picture, function(err) {
+        if (err) {
+            logger.error("Failed to add playlist: " + err);
+            response.redirect("/error");  // ← redirect to error page if something goes wrong
+        } else {
+            response.redirect("/dashboard");
+        }
     });
-  },
-
+},
 
 deletePlaylist(request, response) {
     const playlistId = request.params.id;
     logger.debug(`Deleting Playlist ${playlistId}`);
-    playlistStore.removePlaylist(playlistId);
-    response.redirect("/dashboard");
+    playlistStore.removePlaylist(playlistId, function(err) {  // ← pass a callback
+        if (err) {
+            logger.error("Failed to delete playlist: " + err);
+            response.redirect("/error");
+        } else {
+            response.redirect("/dashboard");
+        }
+    });
 },
-
-
 };
 
 export default dashboard;

@@ -21,7 +21,6 @@ const playlist = {
 
   addSong(request, response) {
     const playlistId = request.params.id;
-    const playlist = playlistStore.getPlaylist(playlistId);
     const newSong = {
       id: uuidv4(),
       title: request.body.title,
@@ -29,7 +28,7 @@ const playlist = {
     };
     playlistStore.addSong(playlistId, newSong);
     response.redirect('/playlist/' + playlistId);
-  },
+},
   deleteSong(request, response) {
     const playlistId = request.params.id;
     const songId = request.params.songid;

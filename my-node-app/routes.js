@@ -19,7 +19,7 @@ router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
 
 // App routes
-//router.get('/start', start.createView);
+router.get('/start', start.createView);
 router.get('/dashboard', dashboard.createView);
 router.get('/about', about.createView);
 router.get('/stats', stats.createView);
