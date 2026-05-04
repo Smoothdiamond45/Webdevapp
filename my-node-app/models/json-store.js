@@ -10,7 +10,7 @@ import dotenv from "dotenv";
 dotenv.config({ quiet: true });
 
 cloudinary.config({
- CLOUDINARY_CLOUD_NAME=your_cloud_name,
+ CLOUDINARY_CLOUD_NAME=matthew,
  CLOUDINARY_API_KEY=152333183591859,
  CLOUDINARY_API_SECRET=-fjQnZ73hsVf9_boNEexB0kQrng
 
